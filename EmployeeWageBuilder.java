@@ -1,19 +1,39 @@
-public class EmployeeWageBuilder{
+public class EmployeeWageBuilder {
 	//Global constants
 	static final int PART_TIME = 1;
 	static final int FULL_TIME = 2;
+	String COMPANY;
+	int WAGE_PER_HR;
+	int MAX_DAYS;
+	int MAX_HRS;
+	
+	public EmployeeWageBuilder(String COMPANY, int WAGE_PER_HR, int MAX_DAYS, int MAX_HRS) {
+		this.COMPANY = COMPANY;
+		this.WAGE_PER_HR = WAGE_PER_HR;
+		this.MAX_DAYS = MAX_DAYS;
+		this.MAX_DAYS = MAX_DAYS;
+		this.MAX_HRS = MAX_HRS;
+	}
 	
 	public static void main(String[] args) {
 		System.out.println("Welcome To Employee Wage Calculator");
 		
-		calculateEmpWage("DMart", 20, 2, 10);
-		calculateEmpWage("Reliance", 10, 4, 20);
+		EmployeeWageBuilder obj1 = new EmployeeWageBuilder("DMart", 20, 2, 10);
+		EmployeeWageBuilder obj2 = new EmployeeWageBuilder("Reliance", 10, 4, 20);
+		
+		int wageForDMart = obj1.calculateEmpWage("DMart", 20, 2, 10);
+		System.out.println("Total Employee Wage for company "+ obj1.COMPANY + " is: " +wageForDMart);
+		
+		int wageForReliance = obj2.calculateEmpWage("Reliance", 10, 4, 20);
+		System.out.println("Total Employee Wage for company "+ obj2.COMPANY + " is: " +wageForReliance);
 				
 	}
 	
+	
 	//Method to calculate employee wage
-	private static void calculateEmpWage(String name, int emp_wage_per_hr,int max_working_days,int max_hrs_in_month) {
+	public int calculateEmpWage(String name, int emp_wage_per_hr,int max_working_days,int max_hrs_in_month) {
 		//variables
+		COMPANY = name;
 		int empHrs = 0;
 		int total_empHrs = 0;
 		int total_working_days = 0;
@@ -44,8 +64,7 @@ public class EmployeeWageBuilder{
 			total_empHrs = max_hrs_in_month;															
 		
 		total_empWage = total_empHrs * emp_wage_per_hr;
-		
-		System.out.println("Total Employee Wage for company "+ name + " is: " +total_empWage);
+		return total_empWage;
 				
 	}
 	
