@@ -52,7 +52,6 @@ public class EmployeeWageBuilder{
 		
 		//computation
 		total_empWage = calculateEmpWage(PER_HR_WAGE, MAX_WORKING_DAYS, MAX_HRS);
-		System.out.println("Total Employee Wage : "+total_empWage);
-				
+		System.out.println("Total Employee Wage : "+total_empWage);			
 	}
 }
