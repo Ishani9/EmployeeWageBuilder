@@ -3,8 +3,16 @@ public class EmployeeWageBuilder{
 	static final int PART_TIME = 1;
 	static final int FULL_TIME = 2;
 	
+	public static void main(String[] args) {
+		System.out.println("Welcome To Employee Wage Calculator");
+		
+		calculateEmpWage("DMart", 20, 2, 10);
+		calculateEmpWage("Reliance", 10, 4, 20);
+				
+	}
+	
 	//Method to calculate employee wage
-	private static int calculateEmpWage(int emp_wage_per_hr,int max_working_days,int max_hrs_in_month) {
+	private static void calculateEmpWage(String name, int emp_wage_per_hr,int max_working_days,int max_hrs_in_month) {
 		//variables
 		int empHrs = 0;
 		int total_empHrs = 0;
@@ -36,22 +44,10 @@ public class EmployeeWageBuilder{
 			total_empHrs = max_hrs_in_month;															
 		
 		total_empWage = total_empHrs * emp_wage_per_hr;
+		
+		System.out.println("Total Employee Wage for company "+ name + " is: " +total_empWage);
 				
-		return total_empWage;
 	}
 	
-	public static void main(String[] args) {
-		System.out.println("Welcome To Employee Wage Calculator");
-		
-		//constants
-		int PER_HR_WAGE = 20;
-		int MAX_WORKING_DAYS = 20;
-		int MAX_HRS = 100;
-		//variables
-		int total_empWage = 0;
-		
-		//computation
-		total_empWage = calculateEmpWage(PER_HR_WAGE, MAX_WORKING_DAYS, MAX_HRS);
-		System.out.println("Total Employee Wage : "+total_empWage);			
-	}
+	
 }
