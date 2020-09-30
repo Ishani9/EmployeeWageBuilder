@@ -47,6 +47,7 @@ public class EmployeeWageBuilder implements EmpWageBuilderInterface{
 		int total_empHrs = 0;
 		int total_working_days = 0;
 		int totalEmpWage = 0;
+		List<Integer> dailyWages = new ArrayList<Integer>();
 		
 		//computation
 		while(total_empHrs <= obj.MAX_HRS && total_working_days < obj.MAX_WORK_DAYS) {
@@ -67,12 +68,11 @@ public class EmployeeWageBuilder implements EmpWageBuilderInterface{
 			
 			total_empHrs += empHrs;
 			System.out.println("Day : "+total_working_days+" Emp Hrs : "+empHrs );
+			dailyWages.add(empHrs * obj.PER_HR_WAGE);
 		}
-			
+		obj.setDailyEmpWage(dailyWages);	
 		totalEmpWage = total_empHrs * obj.PER_HR_WAGE;
-		return totalEmpWage;
-				
+		return totalEmpWage;				
 	}
-	
-	
+		
 }
