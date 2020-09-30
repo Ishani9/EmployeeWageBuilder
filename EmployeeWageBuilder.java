@@ -1,6 +1,6 @@
 package Hello;
 
-public class EmployeeWageBuilder {
+public class EmployeeWageBuilder implements EmpWageBuilderInterface{
 	//Global constants
 	static final int PART_TIME = 1;
 	static final int FULL_TIME = 2;
