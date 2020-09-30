@@ -1,44 +1,45 @@
 package Hello;
 
+import java.util.*;
+
 public class EmployeeWageBuilder implements EmpWageBuilderInterface{
 	//Global constants
 	static final int PART_TIME = 1;
 	static final int FULL_TIME = 2;
 	
-	public int num = 0;
-	public CompanyEmpWage[] companyEmpWageArray;
+	//CREATING ARRAYLIST
+
+	ArrayList<CompanyEmpWage> companyEmpWageList;
 	
 	
 	//CONSTRUCTOR
 	public EmployeeWageBuilder() {
-		companyEmpWageArray = new CompanyEmpWage[5];
+		companyEmpWageList = new ArrayList<CompanyEmpWage>();		
 	}
 	
 	//MAIN METHOD
 	public static void main (String[] args) {
 		System.out.println("Welcome To Employee Wage Calculator");
 		
-		EmployeeWageBuilder obj1 = new EmployeeWageBuilder();
+		EmpWageBuilderInterface obj1 = new EmployeeWageBuilder();
 		obj1.addCompanyEmpWage("DMart", 20, 2, 10);
 		obj1.addCompanyEmpWage("Reliance", 10, 4, 20);
 	
 		obj1.computeEmpWage();			
 	}
 	
-	
+
 	public void addCompanyEmpWage(String company, int emp_wage_per_hr, int max_working_days, int max_hrs_in_month) {
-		companyEmpWageArray[num] = new CompanyEmpWage(company, emp_wage_per_hr, max_working_days, max_hrs_in_month);
-		num++;
+		companyEmpWageList.add(new CompanyEmpWage(company, emp_wage_per_hr, max_working_days, max_hrs_in_month));
 	}
 	
-	
-	public void computeEmpWage() {
-		for(int i = 0; i < num; i++) {
-			int temp = calculateEmpWage(companyEmpWageArray[i]);
-			companyEmpWageArray[i].setTotalEmpWage(temp);
-			System.out.println(companyEmpWageArray[i]);
+	public void computeEmpWage() {																			
+		for(int i = 0; i < companyEmpWageList.size(); i++) {
+			companyEmpWageList.get(i).setTotalEmpWage(calculateEmpWage(companyEmpWageList.get(i)));	//CALLING CALCULATE METHOD
+			System.out.println(companyEmpWageList.get(i));
 		}
 	}
+	
 	
 	//Method to calculate employee wage
 	public int calculateEmpWage( CompanyEmpWage obj) {
