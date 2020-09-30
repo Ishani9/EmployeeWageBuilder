@@ -25,7 +25,9 @@ public class EmployeeWageBuilder implements EmpWageBuilderInterface{
 		obj1.addCompanyEmpWage("DMart", 20, 2, 10);
 		obj1.addCompanyEmpWage("Reliance", 10, 4, 20);
 	
-		obj1.computeEmpWage();			
+		obj1.computeEmpWage();
+		System.out.println("Total wage for DMart is "+ obj1.getTotalWage("DMart"));
+		System.out.println("Total wage for Reliance is "+ obj1.getTotalWage("Reliance"));
 	}
 	
 
@@ -73,6 +75,16 @@ public class EmployeeWageBuilder implements EmpWageBuilderInterface{
 		obj.setDailyEmpWage(dailyWages);	
 		totalEmpWage = total_empHrs * obj.PER_HR_WAGE;
 		return totalEmpWage;				
+	}
+	
+	public int getTotalWage(String companyName) {
+		int tWage = 0;
+		for(int i = 0; i < companyEmpWageList.size(); i++) {
+			if(companyEmpWageList.get(i).COMPANY.equalsIgnoreCase(companyName)) {
+				tWage = companyEmpWageList.get(i).totalEmpWage;
+			}
+		}
+		return tWage;
 	}
 		
 }
